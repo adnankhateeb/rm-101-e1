@@ -22,10 +22,23 @@ const TaskApp = () => {
    const handleAdd = (text) => {
       let id = nanoid(3);
       let todo = { id: id, text: text, done: false, count: 1 };
+      for (let task of allTasks) {
+         if (task.text === text) {
+            return;
+         }
+      }
       allTasks.push(todo);
       setRerender(!render);
    };
-   
+
+   const handleCount = (i, val) => {
+      if (val === -1 && allTasks[i].count === 0) {
+         return;
+      }
+      allTasks[i].count += val;
+      setRerender(!render);
+   };
+
    useEffect(() => {
       setAllTasks(data);
    }, []);
@@ -40,6 +53,7 @@ const TaskApp = () => {
             handleStatus={handleStatus}
             handleRemove={handleRemove}
             handleAdd={handleAdd}
+            handleCount={handleCount}
          />
       </div>
    );

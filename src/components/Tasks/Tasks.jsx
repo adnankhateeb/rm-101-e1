@@ -2,7 +2,13 @@ import React from "react";
 import styles from "./tasks.module.css";
 import Task from "../Task/Task";
 
-const Tasks = ({ allTasks, handleStatus, handleRemove, handleAdd }) => {
+const Tasks = ({
+   allTasks,
+   handleStatus,
+   handleRemove,
+   handleAdd,
+   handleCount,
+}) => {
    // NOTE: do not delete `data-testid` key value pair
 
    return (
@@ -19,6 +25,7 @@ const Tasks = ({ allTasks, handleStatus, handleRemove, handleAdd }) => {
                      handleStatus={handleStatus}
                      handleRemove={handleRemove}
                      handleAdd={handleAdd}
+                     handleCount={handleCount}
                   />
                ))}
             </ul>
