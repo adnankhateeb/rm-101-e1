@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./taskHeader.module.css";
 
-const TaskHeader = () => {
-  // sample values to be replaced
-  let totalTask = 0;
-  let unCompletedTask = 0;
+const TaskHeader = ({ allTasks }) => {
+   console.log("allTasks:", allTasks)
+   // sample values to be replaced
+   let totalTask = allTasks.length;
+   let unCompletedTask = 0;
 
-  // NOTE: do not delete `data-testid` key value pair
-  return (
-    <div data-testid="task-header" className={styles.taskHeader}>
-      <b data-testid="header-remaining-task">{unCompletedTask}</b>
-      <b data-testid="header-total-task">{totalTask}</b>
-    </div>
-  );
+   allTasks.map((e) => {
+      if (!e.done) {
+         unCompletedTask += 1;
+      }
+      return unCompletedTask;
+   });
+
+   // NOTE: do not delete `data-testid` key value pair
+   return (
+      <div data-testid="task-header" className={styles.taskHeader}>
+         <h1>Todo List</h1>
+         You have <b data-testid="header-remaining-task">
+            {unCompletedTask}
+         </b>{" "}
+         of <b data-testid="header-total-task">{totalTask}</b> tasks remaining
+      </div>
+   );
 };
 
 export default TaskHeader;

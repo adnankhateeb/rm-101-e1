@@ -1,3 +1,31 @@
 .task {
-  /* Sample  */
+   /* Sample  */
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 30px;
+   height: fit-content;
+   height: 20px;
+}
+
+.task * {
+   display: flex;
+   /* width: 30%; */
+}
+
+.task button {
+   height: 20px;
+   text-align: center;
+   align-items: center;
+   margin-right: 4px;
+   margin-left: 4px;
+   background-color: #8197E8;
+   border: none;
+   font-size: 16px;
+   padding: 10px;
+   color: white;
+   border-radius: 5px;
+}
+.task span{
+  font-size: 18px;
+  font-weight: bold;
 }
