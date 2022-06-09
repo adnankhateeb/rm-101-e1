@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AddTask from "./AddTask/AddTask";
 import data from "../data/tasks.json";
-import { nanoid } from "nanoid";
 
 import styles from "./taskApp.module.css";
 
@@ -11,6 +10,7 @@ import Tasks from "./Tasks/Tasks";
 const TaskApp = () => {
    const [allTasks, setAllTasks] = useState([]);
    const [render, setRerender] = useState(false);
+   const [id, setId] = useState(allTasks.length);
    const handleStatus = (idx) => {
       allTasks[idx].done = !allTasks[idx].done;
       setRerender(!render);
@@ -20,8 +20,8 @@ const TaskApp = () => {
       setRerender(!render);
    };
    const handleAdd = (text) => {
-      let id = nanoid(3);
       let todo = { id: id, text: text, done: false, count: 1 };
+      setId((p) => p + 1);
       for (let task of allTasks) {
          if (task.text === text) {
             return;
